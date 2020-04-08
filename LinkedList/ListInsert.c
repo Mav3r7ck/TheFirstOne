@@ -59,7 +59,7 @@ void main(){
 		InsertAtEnd(head);
 }
 
-void printList(struct N* head){
+void printList(node* head){
 	printf("\nThe linked list is as follows:\n");
 	node* a = head;
 	while(a != NULL){
