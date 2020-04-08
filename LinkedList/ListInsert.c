@@ -8,6 +8,9 @@ typedef struct N{
 }node;
 
 void printList(node* head);
+void InsertAtFront(node* head);
+void InsertAfterNode(int n_data, node* head);
+void InsertAtEnd(node* head);
 	
 
 void main(){
@@ -25,7 +28,6 @@ void main(){
 	node* end = NULL;
 	
 	for(i=0; i<n; i++){
-		
 		temp = (node*)malloc(sizeof(node));
 		scanf("%d",&(temp->data));
 		temp->next = NULL;
@@ -38,15 +40,69 @@ void main(){
 			end->next = temp;
 		}
 	}
-	printf("The Linked List is as follows:\n");
+	
 	printList(head);
+	
+	//Inserting a node can be done in 3 ways as follows:
+	printf("\nSelect where you want to insert a node:\n1. At the front of linked list.\n2. After a given node.\n3. At the end of the linked list.\n\n");
+	int c;
+	scanf("%d", &c);
+	if(c==1)
+		InsertAtFront(head);
+	else if(c==2){
+		int n_data;
+		printf("After which node you want to insert a new node?:");
+		scanf("%d", &n_data);
+		InsertAfterNode(n_data, head);
+	}
+	else if(c==3)
+		InsertAtEnd(head);
 }
 
 void printList(struct N* head){
+	printf("\nThe linked list is as follows:\n");
 	node* a = head;
 	while(a != NULL){
 		printf("%d -> ", a->data);
 		a = a->next;
 	}
-	printf("NULL");
+	printf("NULL\n");
+}
+
+void InsertAtFront(node* head){
+	node* temp = (node*)malloc(sizeof(node));
+	printf("Enter the value to be inserted:");
+	scanf("%d", &(temp->data));
+	temp->next = head;
+	head = temp;
+	printList(head);
+}
+
+void InsertAfterNode(int n_data, node* head){
+	node* a = head;
+	while((a != NULL) && (a->data != n_data)){
+		a = a->next;
+	}
+	if(a == NULL){
+		printf("\nThis node doesn't exist in the list.");
+		return;
+	}
+	node* temp = (node*)malloc(sizeof(node));
+	printf("\nEnter the value to be inserted:");
+	scanf("%d", &(temp->data));
+	temp->next = a->next;
+	a->next = temp;
+	printList(head);
+}
+
+void InsertAtEnd(node* head){
+	node* a = head;
+	while(a->next != NULL)
+		a = a->next;
+	node* temp = (node*)malloc(sizeof(node));
+	printf("\nEnter the value to be inserted:");
+	scanf("%d", &(temp->data));
+	a->next = temp;
+	temp->next = NULL;
+	printList(head);
 }
