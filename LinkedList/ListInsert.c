@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<string.h>
 #include<stdlib.h>
 
 typedef struct N{
@@ -21,7 +20,7 @@ void main(){
 	if(n==0)
 		return;
 		
-	printf("Enter the elememts of the linked list:");
+	printf("Enter the elememts of the linked list:\n");
 	
 	node* head = NULL;	
 	node* temp = NULL;
