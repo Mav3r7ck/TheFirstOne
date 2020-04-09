@@ -6,10 +6,10 @@ typedef struct N{
 	struct N* next;
 }node;
 
-void printList(node* head);
-void InsertAtFront(node* head);
-void InsertAfterNode(int n_data, node* head);
-void InsertAtEnd(node* head);
+void printList(node*);
+void InsertAtFront(node*);
+void InsertAfterNode(int, node*);
+void InsertAtEnd(node*);
 	
 
 void main(){
@@ -43,7 +43,7 @@ void main(){
 	printList(head);
 	
 	//Inserting a node can be done in 3 ways as follows:
-	printf("\nSelect where you want to insert a node:\n1. At the front of linked list.\n2. After a given node.\n3. At the end of the linked list.\n\n");
+	printf("\nSelect where you want to insert a node:\n1. At the front of linked list.\n2. After a given node.\n3. At the end of the linked list.\n");
 	int c;
 	scanf("%d", &c);
 	if(c==1)
